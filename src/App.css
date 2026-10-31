@@ -8,6 +8,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   --accent: #b2f66b;
+  --fx-accent: #b2f66b; /* FX: matches your accent for the new effects */
   --muted: #a6afbf;
 }
 
@@ -53,6 +54,11 @@ footer {
   align-items: center;
   padding-block: 25px;
   border-bottom: 1px solid #ffffff12;
+  /* FX: sticky header that blurs once you scroll */
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: background 300ms, padding 300ms;
 }
 
 .logo {
@@ -61,8 +67,9 @@ footer {
   font-weight: 700;
 }
 
+/* FX: was `h1 span`, which would now also color the line wrappers */
 .logo span,
-h1 span {
+h1 .accent {
   color: var(--accent);
 }
 
@@ -135,6 +142,11 @@ h1 {
   transform: translateY(-3px);
 }
 
+/* FX: the magnetic pull replaces the fixed lift on desktop */
+.fx-magnetic .button:hover {
+  transform: none;
+}
+
 .primary {
   background: var(--accent);
   color: #14200a;
@@ -146,6 +158,11 @@ h1 {
 
 .secondary:hover {
   background: #ffffff08;
+}
+
+/* FX: the grid item is now the TiltCard wrapper */
+.hero-card-wrap .fx-tilt {
+  border-radius: 22px;
 }
 
 .hero-card {
@@ -325,10 +342,14 @@ footer {
     padding-block: 70px;
   }
 
-  .hero-card {
+  /* FX: sizing moved from .hero-card to its wrapper */
+  .hero-card-wrap {
     max-width: 400px;
     width: 100%;
     justify-self: center;
+  }
+
+  .hero-card {
     transform: none;
   }
 
@@ -337,8 +358,24 @@ footer {
     gap: 0;
   }
 
+  /* FX: swipeable project carousel on phones/tablets */
   .project-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-block: 6px 14px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .project-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
   }
 }
 
@@ -378,6 +415,7 @@ footer {
     transition: none !important;
   }
 }
+
 .profile-photo {
   display: block;
   width: 100%;

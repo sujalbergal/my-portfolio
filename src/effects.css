@@ -1,0 +1,186 @@
+/* Replace with the exact lime from your site if it differs */
+:root {
+  --fx-accent: #b2f66b;
+  --fx-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ---------- Headline line rise ---------- */
+.fx-line {
+  display: block;
+  overflow: hidden;
+  /* room for descenders (g, p, j) so they don't get clipped */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+.fx-line-in {
+  display: block;
+  transform: translateY(110%);
+  animation: fx-rise 0.9s var(--fx-ease) var(--d, 0ms) forwards;
+}
+@keyframes fx-rise {
+  to { transform: translateY(0); }
+}
+
+/* ---------- Scroll reveal ---------- */
+.fx-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--fx-ease) var(--d, 0ms),
+              transform 0.7s var(--fx-ease) var(--d, 0ms);
+}
+.fx-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Floating + tilting card ---------- */
+.fx-float {
+  perspective: 1000px;
+  animation: fx-bob 6s ease-in-out infinite;
+}
+@keyframes fx-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.fx-tilt {
+  --rx: 0deg;
+  --ry: 0deg;
+  --gx: 50%;
+  --gy: 50%;
+  position: relative;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.5s var(--fx-ease);
+  transform-style: preserve-3d;
+  touch-action: pan-y;
+  will-change: transform;
+}
+.fx-tilt.is-active {
+  transition: transform 0.08s linear;
+}
+.fx-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    380px circle at var(--gx) var(--gy),
+    rgba(255, 255, 255, 0.1),
+    transparent 60%
+  );
+  transition: opacity 0.3s;
+}
+.fx-tilt.is-active .fx-glare {
+  opacity: 1;
+}
+
+/* ---------- Magnetic ---------- */
+.fx-magnetic {
+  display: inline-block;
+  /* enlarges the pull zone without changing layout */
+  padding: 14px;
+  margin: -14px;
+}
+.fx-magnetic > * {
+  transition: transform 0.35s var(--fx-ease);
+  will-change: transform;
+}
+
+/* ---------- Scroll progress ---------- */
+.fx-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--fx-accent);
+  transform-origin: left;
+  transform: scaleX(0);
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* ---------- Spotlight ---------- */
+.fx-spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: radial-gradient(
+    520px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(178, 246, 107, 0.07),
+    transparent 65%
+  );
+}
+
+/* ---------- Cursor ring ---------- */
+.fx-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--fx-accent);
+  border-radius: 50%;
+  z-index: 200;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  transition: width 0.25s var(--fx-ease), height 0.25s var(--fx-ease),
+              background 0.25s;
+}
+.fx-cursor.is-hover {
+  width: 60px;
+  height: 60px;
+  background: rgba(178, 246, 107, 0.12);
+}
+
+/* ---------- Optional helpers: add these classes to your own elements ---------- */
+
+/* Nav links: <a className="nav-link"> */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  background: var(--fx-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--fx-ease);
+}
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Header after scrolling: <header className={scrolled ? "is-scrolled" : ""}>
+   Adjust the background to match your page color. */
+header.is-scrolled {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(11, 15, 23, 0.78);
+}
+
+/* Pulsing status dot: add className="fx-pulse" to the green "Always building" dot */
+.fx-pulse {
+  animation: fx-pulse 2s ease-out infinite;
+}
+@keyframes fx-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(178, 246, 107, 0.55); }
+  100% { box-shadow: 0 0 0 10px rgba(178, 246, 107, 0); }
+}
+
+/* Keep page content above the spotlight layer */
+#root { position: relative; z-index: 1; }
+
+/* ---------- Respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .fx-line-in { transform: none; animation: none; }
+  .fx-reveal { opacity: 1; transform: none; transition: none; }
+  .fx-float, .fx-pulse { animation: none; }
+  .fx-tilt, .fx-magnetic > * { transition: none; }
+}
