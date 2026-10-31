@@ -104,12 +104,12 @@ function App() {
             </div>
 
            <img
-  className="profile-photo"
-  src="/profile(2).jpg"
-  alt="Sujal Bergal"
-  width="400"
-  height="400"
-/>
+               className="profile-photo"
+               src="/profile.jpg"
+               alt="Sujal Bergal"
+               width="400"
+               height="400"
+          />
 
             <p>From an idea to a working prototype.</p>
 
