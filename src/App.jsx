@@ -128,18 +128,24 @@ function App() {
           </div>
 
           <div className="about-copy">
-            <p>
-              I’m a third-year B.Tech student specializing in Computer
-              Science and Engineering with Artificial Intelligence and
-              Machine Learning at Pimpri Chinchwad University.
-            </p>
+          <p>
+  I’m a third-year B.Tech student specializing in Computer Science
+  and Engineering with Artificial Intelligence and Machine Learning
+  at Pimpri Chinchwad University.
+</p>
 
-            <p>
-              I enjoy solving practical problems through software, exploring
-              AI tools, and collaborating on hackathon projects. My work
-              spans student platforms, resource-sharing applications, and
-              hardware prototypes.
-            </p>
+<p>
+  My interests focus on backend development and research. I work
+  with Python, FastAPI, and SQL to develop backend functionality,
+  explore API integrations, and investigate practical solutions
+  for student and campus platforms.
+</p>
+
+<p>
+  I’m currently contributing to CampusOS AI and ResourceX while
+  strengthening my skills in API design, database management,
+  and technical research.
+</p>
           </div>
         </section>
 
