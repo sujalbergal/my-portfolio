@@ -2,17 +2,17 @@ import "./App.css";
 
 const projects = [
   {
-    title: "CampusOS AI",
-    description:
-      "An AI-powered platform for students with notes assistance, academic planning, and placement preparation.",
-    stack: "React · FastAPI · Gemini",
-  },
-  {
-    title: "ResourceX",
-    description:
-      "A campus resource-sharing portal where teachers list resources, students request them, and administrators manage the platform.",
-    stack: "Resource Management · Booking Workflow",
-  },
+  title: "CampusOS AI — In Progress",
+  description:
+    "Contributing to backend development and research for an AI-powered student platform. My work focuses on backend functionality and exploring approaches for student support features.",
+  stack: "Role: Backend Development & Research",
+},
+{
+  title: "ResourceX — In Progress",
+  description:
+    "Contributing to backend development and research for a campus resource-sharing platform where teachers list resources, students submit requests, and administrators oversee the portal.",
+  stack: "Role: Backend Development & Research",
+},
   {
     title: "Smart Parking System",
     description:
@@ -145,7 +145,7 @@ function App() {
 
         <section id="projects" className="section">
           <p className="eyebrow">02 / SELECTED WORK</p>
-          <h2>Ideas I’ve brought to life.</h2>
+          <h2>Projects I’m contributing to.</h2>
 
           <div className="project-grid">
             {projects.map((project, index) => (
