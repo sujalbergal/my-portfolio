@@ -23,16 +23,19 @@ const projects = [
 
 const skills = [
   "Python",
+  "FastAPI",
+  "SQL",
+  "REST APIs",
+  "Git & GitHub",
+  "Technical Research",
   "Java",
   "C / C++",
   "JavaScript",
   "React",
-  "FastAPI",
   "Django",
-  "SQL",
-  "Git & GitHub",
   "Arduino / ESP32",
 ];
+
 
 function App() {
   return (
