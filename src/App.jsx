@@ -39,7 +39,7 @@ function App() {
     <>
       <header className="header">
         <a className="logo" href="#home" aria-label="Sujal home">
-          Sujal<span>.</span>
+          Sujal bergal<span>.</span>
         </a>
 
         <nav aria-label="Main navigation">
@@ -87,7 +87,13 @@ function App() {
                 rel="noopener noreferrer"
               >
                 LinkedIn ↗
-              </a>
+              </a><a
+  className="button secondary"
+  href="/resume.pdf"
+  download="Sujal_Bergal_Resume.pdf"
+>
+  Download resume ↓
+</a>
             </div>
           </div>
 
@@ -97,7 +103,13 @@ function App() {
               <span>Always building. Always learning.</span>
             </div>
 
-            <div className="monogram">SB</div>
+           <img
+  className="profile-photo"
+  src="/profile.jpg"
+  alt="Sujal Bergal"
+  width="400"
+  height="400"
+/>
 
             <p>From an idea to a working prototype.</p>
 
