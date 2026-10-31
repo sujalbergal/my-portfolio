@@ -105,7 +105,7 @@ function App() {
 
            <img
                className="profile-photo"
-               src="/profile.jpg"
+      src="/profile.jpg"
                alt="Sujal Bergal"
                width="400"
                height="400"
